@@ -1,6 +1,6 @@
 from django.db import models
 
-Class User(models.Model):
+class User(models.Model):
     name = models.CharField(max_length = 30)
     email = models.CharField(max_length = 30)
     phone = models.CharField(max_length = 30)
@@ -8,16 +8,20 @@ Class User(models.Model):
                                     choices = ( ('military', '군인'),
                                                 ('counselor', '상담사')),
                                     default = "")
-    id = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
     #tag = 
 
-Class Military_User(User):
+    def __str__(self):
+        return (self.name)
+
+class Military_User(User):
     rank = models.CharField(max_length = 30)
     workplace = models.CharField(max_length = 200)
+    def __str__(self):
+        return (self.name)
 
-Class Counselor_User(User):
+class Counselor_User(User):
     career = models.TextField()
     #photo = 
-
-    
+    def __str__(self):
+        return (self.name)
